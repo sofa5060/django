@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="display:flex; flex-direction: column;">
+
+  <h1 style="margin-bottom: 20px;">Welcome to the Home Page!</h1>
+  
+  <a href="{% url 'base:add_car' %}" style="color: #00eaff; font-size: inherit; text-decoration: underline; margin-bottom: 20px; display: inline-block;">
+    + Add Car
+  </a>
+  
+  <div style="margin-top: 20px;">
+    {% for car in cars %}
+      <p style="margin-bottom: 10px;">
+        <a href="{% url 'base:car_page_empty' car.id %}" style="color: hwb(282 31% 33%); font-size: inherit; text-decoration: none;">
+          {{ car.name }} (View Details)
+        </a>
+      </p>
+    {% empty %}
+      <p>No cars available. Add a new car using the "+" button.</p>
+    {% endfor %}
+  </div>
+  
+  <form action="{% url 'logout' %}" method="POST" class="logout-form" style="margin-top: 20px;">
+    {% csrf_token %}
+    <button type="submit" class="logout-btn">Logout</button>
+  </form>
+</div>
+{% endblock %}

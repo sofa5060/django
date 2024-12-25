@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+    <h1>Your Uploaded Images for {{ car.name }}</h1>
+    <ul style="list-style: none;">
+        {% for image in images %}
+        <li><img src="{{ image.image.url }}" alt="Uploaded Image" style="max-width: 200px;"></li>
+        {% empty %}
+        <p>No images uploaded yet.</p>
+        {% endfor %}
+    </ul>
+    <ul style="display: flex; gap: 10px; list-style: none;">
+        <li><a href="{% url 'base:car_page_one' car.id %}">Upload More Images</a></li>
+        <li><a href="{% url 'base:home' %}">Go to Home</a></li>
+    </ul>
+</div>
+{% endblock %}

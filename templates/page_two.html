@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Recognition Images for {{ car.name }}</title>
+</head>
+<body>
+    <h1>Face Recognition Images for {{ car.name }}</h1>
+    
+    {% if images %}
+        <ul>
+            {% for image in images %}
+                <li>
+                    <img src="{{ image.image.url }}" alt="Face Recognition Image" style="max-width: 200px;">
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No images uploaded for face recognition for this car.</p>
+    {% endif %}
+    
+    <ul>
+        <li><a href="{% url 'base:home' %}">Go to home page</a></li>
+    </ul>
+</body>
+</html>

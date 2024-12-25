@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+    <h1>{{ car.name }}</h1>
+    <p>Control Your Car</p>
+    
+    <ul style="display: flex; gap: 20px; list-style: none;">
+        <li><a href="{% url 'base:car_page_one' car.id %}">Upload New Face</a></li>
+        <li><a href="{% url 'base:car_page_two' car.id %}">Unknown Detected Faces</a></li>
+        <li><a href="{% url 'base:car_page_three' car.id %}">All Uploaded Faces</a></li>
+        <li><a href="{% url 'base:home' %}">Go to Home</a></li>
+    </ul>
+</div>
+{% endblock %}

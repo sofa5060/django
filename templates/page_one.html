@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
+
+    <h1>Upload an Image for {{ car.name }}</h1>
+    <form method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+    <ul style="list-style: none; margin-top: 20px; display: flex; gap: 10px;">
+        <li><a href="{% url 'base:car_page_three' car.id %}">Go to Display Uploaded Images</a></li>
+        <li><a href="{% url 'base:home' %}">Go to Home</a></li>
+    </ul>
+</div>
+
+{% endblock %}
