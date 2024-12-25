@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage  # Ensure this import is present
 from django.views.decorators.csrf import csrf_protect
@@ -148,7 +148,16 @@ def upload_unknown_image(request):
     return JsonResponse({"error": "No image uploaded"}, status=400)
 
 
-@login_required
 def get_user_images(request, user_id, car_id):
     images = ImageUpload.objects.filter(user_id=user_id, car_id=car_id, source='manual').values("image", "uploaded_at")
     return JsonResponse(list(images), safe=False)
+
+def get_media_image(request, name):
+    # access the media folder
+    image_path = os.path.join('media', name)
+    
+    # open the image
+    image_data = open(image_path, "rb").read()
+    
+    # return the image
+    return HttpResponse(image_data, content_type="image/jpeg")
