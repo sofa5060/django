@@ -153,8 +153,11 @@ def get_user_images(request, user_id, car_id):
     return JsonResponse(list(images), safe=False)
 
 def get_media_image(request, name):
+    # print the folders
+    print(os.listdir('./'))
+    
     # access the media folder
-    image_path = os.path.join('/app/media/images', name)
+    image_path = os.path.join('images', name)
     
     # open the image
     image_data = open(image_path, "rb").read()
