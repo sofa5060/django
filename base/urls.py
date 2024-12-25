@@ -18,6 +18,6 @@ urlpatterns = [
   path('car/<int:car_id>/images/', views.page_two, name='car_images'),
   path('car/<int:car_id>/empty/', views.car_page_empty, name='car_page_empty'),  # New empty page
   path('api/get-user-images/<int:user_id>/<int:car_id>/', views.get_user_images, name='get_user_images'),
-  path('api/get-media-image/<str:filename>/', views.get_media_image, name='get_media_image'),
+  path('api/get-media-image/<str:name>/', views.get_media_image, name='get_media_image'),
   path('car/<int:car_id>/images/', views.page_two, name='car_images'),
 ]

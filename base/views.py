@@ -154,7 +154,7 @@ def get_user_images(request, user_id, car_id):
 
 def get_media_image(request, name):
     # access the media folder
-    image_path = os.path.join('media', name)
+    image_path = os.path.join('media/images', name)
     
     # open the image
     image_data = open(image_path, "rb").read()
