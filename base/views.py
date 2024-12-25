@@ -7,7 +7,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage  # Ensure this import is present
 from django.views.decorators.csrf import csrf_protect
 from django.core.files.base import ContentFile
-import base64
 from .form import ImageUploadForm
 from .models import ImageUpload
 from django.contrib.auth.models import User
